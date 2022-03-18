@@ -17,13 +17,19 @@ class Game {
   }
 
   registerEvents() {
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    document.addEventListener('keyup', (e) => {
+        console.log(e.key);
+        if (e.key === 'Alt' && e.key === 'Shift' && e.key === 'Control') {
+            return;
+        } else if (e.key === 'Alt' || e.key === 'Shift' || e.key === 'Control') {
+            return;
+        } else if (e.key.toLowerCase() === this.currentSymbol.textContent) {
+            return this.success();
+        } else {
+            return this.fail();
+        }
+    });
+  }
   }
 
   success() {
